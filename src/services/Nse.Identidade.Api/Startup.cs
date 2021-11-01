@@ -17,11 +17,6 @@ namespace Nse.Identidade.Api
                .AddJsonFile($"appsettings.{hostEnvironment.EnvironmentName}.json")
                .AddEnvironmentVariables();
 
-            if(hostEnvironment.IsDevelopment())
-            {
-                builder.AddUserSecrets<Startup>();
-            }
-
             Configuration = builder.Build();
         }
 
