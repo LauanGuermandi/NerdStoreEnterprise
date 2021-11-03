@@ -18,7 +18,7 @@ namespace Nse.WebApp.Administracao.Services
         public async Task<UsuarioRespostaLogin> Login(UsuarioLogin usuarioLogin)
         {
             var loginContent = new StringContent(JsonSerializer.Serialize(usuarioLogin), Encoding.UTF8, "application/json");
-            var response = await _httpClient.PostAsync("https://localhost:44342/api/identidade/autenticar", loginContent);
+            var response = await _httpClient.PostAsync("https://localhost:44342/autenticacao/autenticar", loginContent);
 
             var options = new JsonSerializerOptions
             {

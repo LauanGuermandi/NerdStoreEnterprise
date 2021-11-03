@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Nse.Identidade.Api.Controllers
 {
-    [Route("[controller]")]
+    [Route("autenticacao")]
     public class AutenticacaoController : MainController
     {
         private readonly SignInManager<IdentityUser> _signInManager;
@@ -21,8 +21,8 @@ namespace Nse.Identidade.Api.Controllers
         private readonly AppSettings _appSettings;
 
         public AutenticacaoController(
-            SignInManager<IdentityUser> signInManager, 
-            UserManager<IdentityUser> userManager, 
+            SignInManager<IdentityUser> signInManager,
+            UserManager<IdentityUser> userManager,
             IOptions<AppSettings> appSettings)
         {
             _signInManager = signInManager;
@@ -49,7 +49,7 @@ namespace Nse.Identidade.Api.Controllers
                 return CustomResponse(await GerarJwt(user.Email));
             }
 
-            foreach(var error in result.Errors)
+            foreach (var error in result.Errors)
             {
                 AdicionarErrosProcessamento(error.Description);
             }
@@ -70,7 +70,7 @@ namespace Nse.Identidade.Api.Controllers
                 return CustomResponse(await GerarJwt(usuarioLogin.Email));
             }
 
-            if(result.IsLockedOut)
+            if (result.IsLockedOut)
             {
                 AdicionarErrosProcessamento("Usuário temporariamente bloqueado por tentativas inválidas");
                 return CustomResponse();
