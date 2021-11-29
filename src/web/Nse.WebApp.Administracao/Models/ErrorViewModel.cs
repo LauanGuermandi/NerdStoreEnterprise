@@ -1,5 +1,3 @@
-using System;
-
 namespace Nse.WebApp.Administracao.Models
 {
     public class ErrorViewModel
